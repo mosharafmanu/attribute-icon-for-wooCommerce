@@ -55,9 +55,9 @@ All `wc_attribute_image_*` options are removed. Deleting via the Plugins screen 
 
 == Screenshots ==
 
-1. Icon upload field on the attribute edit screen.
-2. Icon column in the attribute list table.
-3. Attribute icon displayed on the single product page.
+1. Icon upload field on the Add New Attribute screen — dashed upload zone and Upload Icon button.
+2. Attributes list table with the Icon column showing the uploaded icon alongside each attribute.
+3. Edit Attribute screen with an icon set — Change Icon and Remove buttons.
 
 == Changelog ==
 
