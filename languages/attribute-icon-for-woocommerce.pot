@@ -1,0 +1,80 @@
+# Copyright (C) 2026 mosharafmanu
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Attribute Icon for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/attribute-icon-for-woocommerce\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-05-30T18:57:25+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: attribute-icon-for-woocommerce\n"
+
+#. Plugin Name of the plugin
+#: attribute-icon-for-woocommerce.php
+msgid "Attribute Icon for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: attribute-icon-for-woocommerce.php
+msgid "https://wordpress.org/plugins/attribute-icon-for-woocommerce"
+msgstr ""
+
+#. Description of the plugin
+#: attribute-icon-for-woocommerce.php
+msgid "Adds an icon upload field to each WooCommerce attribute — display icons alongside attribute labels on the product page."
+msgstr ""
+
+#. Author of the plugin
+#: attribute-icon-for-woocommerce.php
+msgid "mosharafmanu"
+msgstr ""
+
+#. Author URI of the plugin
+#: attribute-icon-for-woocommerce.php
+msgid "https://profiles.wordpress.org/mosharafmanu"
+msgstr ""
+
+#: src/class-attributeimagemanager.php:36
+#: src/class-attributeimagemanager.php:71
+msgid "Attribute Icon"
+msgstr ""
+
+#: src/class-attributeimagemanager.php:46
+#: src/class-attributeimagemanager.php:90
+#: src/class-attributeimagemanager.php:180
+msgid "Upload Icon"
+msgstr ""
+
+#: src/class-attributeimagemanager.php:89
+#: src/class-attributeimagemanager.php:179
+msgid "Change Icon"
+msgstr ""
+
+#: src/class-attributeimagemanager.php:95
+msgid "Remove"
+msgstr ""
+
+#: src/class-attributeimagemanager.php:175
+msgid "Choose Attribute Icon"
+msgstr ""
+
+#: src/class-attributeimagemanager.php:176
+msgid "Use this icon"
+msgstr ""
+
+#: src/class-attributeimagemanager.php:177
+msgid "Remove icon"
+msgstr ""
+
+#: src/class-attributeimagemanager.php:178
+msgid "No icon selected"
+msgstr ""
+
+#: src/class-attributeimagemanager.php:214
+msgid "Icon"
+msgstr ""

@@ -1,0 +1,105 @@
+/* ----------------------------------------------------------------------------
+ * Attribute Thumbnail for WooCommerce — admin styles
+ * ------------------------------------------------------------------------- */
+
+/* Wrapper: preview box left, buttons right */
+.wc-attribute-image-field {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 12px;
+}
+
+/* Preview zone */
+.wc-attribute-image-preview {
+	position: relative;
+	width: 80px;
+	height: 80px;
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #f6f7f7;
+	border: 2px dashed #c3c4c7;
+	border-radius: 4px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.wc-attribute-image-preview:hover {
+	border-color: #2271b1;
+	background: #f0f6fc;
+}
+
+/* Empty state: icon only, no text */
+.wc-attribute-image-empty .dashicons {
+	font-size: 28px;
+	width: 28px;
+	height: 28px;
+	color: #c3c4c7;
+	transition: color 0.15s ease;
+	pointer-events: none;
+}
+
+.wc-attribute-image-preview:hover .wc-attribute-image-empty .dashicons {
+	color: #2271b1;
+}
+
+/* Image fills the zone */
+.wc-attribute-image-preview img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Solid border once an image is set */
+.wc-attribute-image-preview.has-image {
+	border: 1px solid #c3c4c7;
+}
+
+/* Remove overlay on hover */
+.wc-attribute-image-remove-overlay {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.5);
+	opacity: 0;
+	transition: opacity 0.15s ease;
+	pointer-events: none;
+}
+
+.wc-attribute-image-preview.has-image:hover .wc-attribute-image-remove-overlay {
+	opacity: 1;
+}
+
+.wc-attribute-image-remove-overlay .dashicons {
+	color: #fff;
+	font-size: 20px;
+	width: 20px;
+	height: 20px;
+}
+
+/* Buttons stacked vertically beside the preview */
+.wc-attribute-image-actions {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+/* List table thumbnail column */
+#wpcontent .column-attribute_thumbnail {
+	width: 60px;
+	vertical-align: middle;
+}
+
+#wpcontent .column-attribute_thumbnail img {
+	display: block;
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+	border-radius: 4px;
+}
