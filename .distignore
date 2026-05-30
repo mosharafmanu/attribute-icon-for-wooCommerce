@@ -1,3 +1,5 @@
 phpcs.xml
 README.md
+PROJECT-STATUS.md
 .distignore
+.gitignore
