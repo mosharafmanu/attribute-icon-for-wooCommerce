@@ -3,3 +3,4 @@ README.md
 PROJECT-STATUS.md
 .distignore
 .gitignore
+.claude/

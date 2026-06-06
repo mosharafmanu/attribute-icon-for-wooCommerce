@@ -7,7 +7,7 @@
 ( function ( $ ) {
 	'use strict';
 
-	var config = window.wcAttributeThumbnail || {};
+	var config = window.attricfoData || {};
 
 	var emptyStateHtml =
 		'<span class="wc-attribute-image-empty">' +
@@ -122,3 +122,45 @@
 	} );
 
 } )( jQuery );
+
+// List table: inject icon column
+( function () {
+	'use strict';
+
+	var data      = window.attricfoData || {};
+	var thumbs    = data.thumbs || {};
+	var iconLabel = data.iconLabel || 'Icon';
+
+	[ '.wp-list-table.widefat thead tr', '.wp-list-table.widefat tfoot tr' ].forEach( function ( selector ) {
+		var row = document.querySelector( selector );
+		if ( row ) {
+			var th = document.createElement( 'th' );
+			th.className = 'column-attribute_thumbnail';
+			th.textContent = iconLabel;
+			row.insertBefore( th, row.children[ 1 ] );
+		}
+	} );
+
+	var rows = document.querySelectorAll( '.wp-list-table.widefat tbody tr' );
+	rows.forEach( function ( row ) {
+		// WooCommerce's attribute table has no standard column classes — find the edit link by href.
+		var editLink = row.querySelector( 'a[href*="edit="]' );
+		var href     = editLink ? editLink.getAttribute( 'href' ) : '';
+		var match    = href.match( /[?&]edit=(\d+)/ );
+		var attrId   = match ? parseInt( match[ 1 ], 10 ) : 0;
+		var url      = thumbs[ attrId ] || '';
+
+		var td = document.createElement( 'td' );
+		td.className = 'column-attribute_thumbnail';
+		if ( url ) {
+			td.innerHTML = '<img src="' + url + '" alt="">';
+		} else {
+			td.innerHTML = '<span style="color:#999">&mdash;</span>';
+		}
+		row.insertBefore( td, row.children[ 1 ] );
+
+		row.querySelectorAll( 'td' ).forEach( function ( cell ) {
+			cell.style.verticalAlign = 'middle';
+		} );
+	} );
+} )();

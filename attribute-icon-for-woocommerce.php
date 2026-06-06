@@ -12,7 +12,7 @@
  * Requires Plugins: woocommerce
  */
 
-namespace WcAttributeThumbnail;
+namespace AttrIconWoo;
 
 defined( 'ABSPATH' ) || exit;
 

@@ -32,7 +32,7 @@ assets/
 
 **Attribute level, not term level.** Variation images are already handled by WooCommerce. This plugin adds an image to the attribute *itself* — a palette icon next to "Color:", a ruler next to "Size:". Term-level swatches are a separate concern.
 
-**Options storage, not term meta.** Attributes are stored in a custom WooCommerce table, not as WordPress taxonomy terms. Images are stored in `wp_options` under the key `wc_attribute_image_{id}` — clean, fast, and trivial to query.
+**Options storage, not term meta.** Attributes are stored in a custom WooCommerce table, not as WordPress taxonomy terms. Images are stored in `wp_options` under the key `attricfo_attribute_image_{id}` — clean, fast, and trivial to query.
 
 **WordPress media library.** The plugin wraps `wp.media()` — the same uploader used everywhere in WordPress admin. No custom file handling.
 
@@ -41,7 +41,7 @@ assets/
 ## Usage in themes
 
 ```php
-use WcAttributeThumbnail\AttributeFrontend;
+use AttrIconWoo\AttributeFrontend;
 
 // Render an attribute image directly
 AttributeFrontend::render_image( $attribute_id, 'thumbnail' );

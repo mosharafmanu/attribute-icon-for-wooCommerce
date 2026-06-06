@@ -6,7 +6,7 @@
  * Provides template helpers for custom themes.
  */
 
-namespace WcAttributeThumbnail;
+namespace AttrIconWoo;
 
 defined( 'ABSPATH' ) || exit;
 

@@ -15,7 +15,7 @@ call_user_func(
 		$option_names = $wpdb->get_col(
 			$wpdb->prepare(
 				"SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE %s",
-				$wpdb->esc_like( 'wc_attribute_image_' ) . '%'
+				$wpdb->esc_like( 'attricfo_attribute_image_' ) . '%'
 			)
 		);
 		// phpcs:enable

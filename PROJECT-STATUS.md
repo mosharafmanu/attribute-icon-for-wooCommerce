@@ -107,9 +107,9 @@ Upload these to the SVN `assets/` folder (not trunk).
 
 ## Technical Notes
 
-- **PHP namespace:** `WcAttributeThumbnail` (kept from original name — internal only)
+- **PHP namespace:** `AttrIconWoo` (kept from original name — internal only)
 - **Text domain:** `attribute-icon-for-woocommerce`
-- **Storage:** Icons stored as attachment IDs in `wp_options` under `wc_attribute_image_{id}`
+- **Storage:** Icons stored as attachment IDs in `wp_options` under `attricfo_attribute_image_{id}`
 - **WP.org slug:** `attribute-icon-for-woocommerce` (pending approval)
 - **Version:** `1.0.0` — bump `PLUGIN_VERSION` constant and `readme.txt` Stable tag together on each release
 - **Tested up to:** WordPress 7.0 — update this in `readme.txt` when new WP versions release

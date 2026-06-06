@@ -37,13 +37,13 @@ Attribute Icon for WooCommerce extends the WooCommerce attribute system with ico
 Yes. If your theme uses `wc_display_product_attributes()` or `woocommerce_attribute_label`, icons appear automatically. For custom templates, use the static helpers:
 
 ```
-use WcAttributeThumbnail\AttributeFrontend;
+use AttrIconWoo\AttributeFrontend;
 echo AttributeFrontend::get_image_html( $attribute_id, 'thumbnail', 'Color' );
 ```
 
 = Where is the icon stored? =
 
-The image attachment ID is stored in `wp_options` under the key `wc_attribute_image_{id}`. The actual file uses the WordPress media library.
+The image attachment ID is stored in `wp_options` under the key `attricfo_attribute_image_{id}`. The actual file uses the WordPress media library.
 
 = What happens when I deactivate? =
 
@@ -51,7 +51,7 @@ Icons stop displaying on the frontend. Options are preserved — reactivate and 
 
 = What happens when I delete the plugin? =
 
-All `wc_attribute_image_*` options are removed. Deleting via the Plugins screen runs the uninstall routine.
+All `attricfo_attribute_image_*` options are removed. Deleting via the Plugins screen runs the uninstall routine.
 
 == Screenshots ==
 

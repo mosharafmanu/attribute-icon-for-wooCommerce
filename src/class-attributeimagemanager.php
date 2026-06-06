@@ -7,16 +7,16 @@
  * in the attribute list table.
  */
 
-namespace WcAttributeThumbnail;
+namespace AttrIconWoo;
 
 defined( 'ABSPATH' ) || exit;
 
 class AttributeImageManager {
 
-	private const OPTION_PREFIX = 'wc_attribute_image_';
-	private const NONCE_ACTION  = 'wc_attribute_image_save';
-	private const NONCE_NAME    = '_wc_attribute_image_nonce';
-	private const FIELD_NAME    = 'wc_attribute_image_id';
+	private const OPTION_PREFIX = 'attricfo_attribute_image_';
+	private const NONCE_ACTION  = 'attricfo_attribute_image_save';
+	private const NONCE_NAME    = '_attricfo_attribute_image_nonce';
+	private const FIELD_NAME    = 'attricfo_attribute_image_id';
 
 	public function init(): void {
 		add_action( 'woocommerce_after_add_attribute_fields', array( $this, 'render_add_form_field' ) );
@@ -25,7 +25,6 @@ class AttributeImageManager {
 		add_action( 'woocommerce_attribute_updated', array( $this, 'save_attribute_image' ), 10, 2 );
 		add_action( 'woocommerce_attribute_deleted', array( $this, 'delete_attribute_image' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
-		add_action( 'admin_footer', array( $this, 'inject_list_table_column' ) );
 	}
 
 	// ─── Add attribute form ─────────────────────────────────────────────
@@ -167,9 +166,15 @@ class AttributeImageManager {
 			true
 		);
 
+		$attributes = wc_get_attribute_taxonomies();
+		$thumbnails = array();
+		foreach ( $attributes as $attr ) {
+			$thumbnails[ $attr->attribute_id ] = self::get_image_url( $attr->attribute_id, array( 40, 40 ) );
+		}
+
 		wp_localize_script(
 			'attribute-icon-for-woocommerce-admin',
-			'wcAttributeThumbnail',
+			'attricfoData',
 			array(
 				'fieldName'    => self::FIELD_NAME,
 				'uploadTitle'  => __( 'Choose Attribute Icon', 'attribute-icon-for-woocommerce' ),
@@ -178,72 +183,10 @@ class AttributeImageManager {
 				'noImageLabel' => __( 'No icon selected', 'attribute-icon-for-woocommerce' ),
 				'changeLabel'  => __( 'Change Icon', 'attribute-icon-for-woocommerce' ),
 				'uploadLabel'  => __( 'Upload Icon', 'attribute-icon-for-woocommerce' ),
+				'thumbs'       => $thumbnails,
+				'iconLabel'    => __( 'Icon', 'attribute-icon-for-woocommerce' ),
 			)
 		);
-	}
-
-	// ─── List table thumbnail injection ─────────────────────────────────
-
-	public function inject_list_table_column(): void {
-		$screen = get_current_screen();
-
-		if ( ! $screen || 'product_page_product_attributes' !== $screen->id ) {
-			return;
-		}
-
-		$attributes = wc_get_attribute_taxonomies();
-		$thumbnails = array();
-
-		foreach ( $attributes as $attr ) {
-			$thumbnails[ $attr->attribute_id ] = self::get_image_url( $attr->attribute_id, array( 40, 40 ) );
-		}
-
-		$json = wp_json_encode( $thumbnails );
-		?>
-		<script>
-		( function () {
-			'use strict';
-			var thumbs = <?php echo $json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>;
-
-			// Add Thumbnail column header to thead and tfoot
-			[ '.wp-list-table.widefat thead tr', '.wp-list-table.widefat tfoot tr' ].forEach( function ( selector ) {
-				var row = document.querySelector( selector );
-				if ( row ) {
-					var th = document.createElement( 'th' );
-					th.className = 'column-attribute_thumbnail';
-					th.textContent = '<?php echo esc_js( __( 'Icon', 'attribute-icon-for-woocommerce' ) ); ?>';
-					row.insertBefore( th, row.children[1] );
-				}
-			} );
-
-			// Add thumbnail cells to each row
-			var rows = document.querySelectorAll( '.wp-list-table.widefat tbody tr' );
-			rows.forEach( function ( row ) {
-				// WooCommerce's attribute table is custom HTML — no .column-name or .row-title classes.
-				// Find the edit link by its href parameter instead.
-				var editLink = row.querySelector( 'a[href*="edit="]' );
-				var href     = editLink ? editLink.getAttribute( 'href' ) : '';
-				var match    = href.match( /[?&]edit=(\d+)/ );
-				var attrId   = match ? parseInt( match[1], 10 ) : 0;
-				var url      = thumbs[ attrId ] || '';
-
-				var td = document.createElement( 'td' );
-				td.className = 'column-attribute_thumbnail';
-				if ( url ) {
-					td.innerHTML = '<img src="' + url + '" alt="">';
-				} else {
-					td.innerHTML = '<span style="color:#999">&mdash;</span>';
-				}
-				row.insertBefore( td, row.children[1] );
-
-				// Align all other cells in this row to match
-				row.querySelectorAll( 'td' ).forEach( function ( cell ) {
-					cell.style.verticalAlign = 'middle';
-				} );
-			} );
-		} )();
-		</script>
-		<?php
 	}
 
 	// ─── Helpers ────────────────────────────────────────────────────────
