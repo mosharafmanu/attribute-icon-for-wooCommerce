@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Attribute Icon for WooCommerce
- * Plugin URI:  https://github.com/mosharafmanu/attribute-icon-for-wooCommerce
+ * Plugin URI:  https://wordpress.org/plugins/attribute-icon-for-woocommerce
  * Description: Adds an icon upload field to each WooCommerce attribute — display icons alongside attribute labels on the product page.
  * Version:     1.0.0
  * Author:      mosharafmanu
